@@ -8,6 +8,14 @@
         "env": []
     },
     {
+        "id": "3a838bfa4c7c3d5b",
+        "type": "tab",
+        "label": "Testes Diversos",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "47c9fdc27cccf721",
         "type": "subflow",
         "name": "modbus temperatura",
@@ -860,6 +868,34 @@
         "rejectUnauthorized": true
     },
     {
+        "id": "90ba3b21421e2cb8",
+        "type": "influxdb",
+        "hostname": "10.0.1.236",
+        "port": "8086",
+        "protocol": "http",
+        "database": "iotQualicarnes01",
+        "name": "AWS-InfluxDB-Qualicarnes-01",
+        "usetls": false,
+        "tls": "cea2d7115083e519",
+        "influxdbVersion": "1.x",
+        "url": "http://localhost:8086",
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "48edfa96e63bb2ec",
+        "type": "influxdb",
+        "hostname": "10.0.1.236",
+        "port": "8086",
+        "protocol": "http",
+        "database": "iotQualicarnes02",
+        "name": "AWS-InfluxDB-Qualicarnes-02",
+        "usetls": false,
+        "tls": "cea2d7115083e519",
+        "influxdbVersion": "1.x",
+        "url": "http://localhost:8086",
+        "rejectUnauthorized": true
+    },
+    {
         "id": "cea2d7115083e519",
         "type": "tls-config",
         "name": "AWS_Certificados_Qualicarnes",
@@ -872,6 +908,20 @@
         "servername": "",
         "verifyservercert": true,
         "alpnprotocol": ""
+    },
+    {
+        "id": "b0493664.35a528",
+        "type": "influxdb",
+        "hostname": "localhost",
+        "port": "8086",
+        "protocol": "http",
+        "database": "Testing",
+        "name": "",
+        "usetls": false,
+        "tls": "ced18875.cf10b8",
+        "influxdbVersion": "1.x",
+        "url": "http://localhost:8086",
+        "rejectUnauthorized": true
     },
     {
         "id": "ced18875.cf10b8",
@@ -944,48 +994,6 @@
         "parallelUnitIdsAllowed": true,
         "showWarnings": true,
         "showLogs": true
-    },
-    {
-        "id": "90ba3b21421e2cb8",
-        "type": "influxdb",
-        "hostname": "10.0.1.236",
-        "port": "8086",
-        "protocol": "http",
-        "database": "iotQualicarnes01",
-        "name": "AWS-InfluxDB-Qualicarnes-01",
-        "usetls": false,
-        "tls": "cea2d7115083e519",
-        "influxdbVersion": "1.x",
-        "url": "http://localhost:8086",
-        "rejectUnauthorized": true
-    },
-    {
-        "id": "48edfa96e63bb2ec",
-        "type": "influxdb",
-        "hostname": "10.0.1.236",
-        "port": "8086",
-        "protocol": "http",
-        "database": "iotQualicarnes02",
-        "name": "AWS-InfluxDB-Qualicarnes-02",
-        "usetls": false,
-        "tls": "cea2d7115083e519",
-        "influxdbVersion": "1.x",
-        "url": "http://localhost:8086",
-        "rejectUnauthorized": true
-    },
-    {
-        "id": "b0493664.35a528",
-        "type": "influxdb",
-        "hostname": "localhost",
-        "port": "8086",
-        "protocol": "http",
-        "database": "Testing",
-        "name": "",
-        "usetls": false,
-        "tls": "ced18875.cf10b8",
-        "influxdbVersion": "1.x",
-        "url": "http://localhost:8086",
-        "rejectUnauthorized": true
     },
     {
         "id": "315c5d3a49af5990",
@@ -6581,6 +6589,1516 @@
         "wires": [
             [
                 "9fd63093eea78bc1"
+            ]
+        ]
+    },
+    {
+        "id": "b84d357e21efaffe",
+        "type": "inject",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "saida produto acabado id=3",
+        "props": [
+            {
+                "p": "topic",
+                "v": "{\"id_sensor\":3}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "30",
+        "topic": "",
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "81ed6d202de0a812"
+            ]
+        ]
+    },
+    {
+        "id": "81ed6d202de0a812",
+        "type": "subflow:47c9fdc27cccf721",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "",
+        "x": 560,
+        "y": 180,
+        "wires": [
+            [
+                "f8adb3fd7f04f3cc"
+            ]
+        ]
+    },
+    {
+        "id": "f8adb3fd7f04f3cc",
+        "type": "debug",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "resultado captura",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "64f87276f374aca4",
+        "type": "inject",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "congelamento materia prima id=4",
+        "props": [
+            {
+                "p": "topic",
+                "v": "{\"id_sensor\":4}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "30",
+        "topic": "",
+        "x": 170,
+        "y": 240,
+        "wires": [
+            [
+                "81ed6d202de0a812"
+            ]
+        ]
+    },
+    {
+        "id": "311a9857d3733bba",
+        "type": "inject",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "tunel congelamento id=1",
+        "props": [
+            {
+                "p": "topic",
+                "v": "{\"id_sensor\":1}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "30",
+        "topic": "",
+        "x": 150,
+        "y": 60,
+        "wires": [
+            [
+                "81ed6d202de0a812"
+            ]
+        ]
+    },
+    {
+        "id": "b753a18f26b65d65",
+        "type": "inject",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "congelamento produto acabado id=2",
+        "props": [
+            {
+                "p": "topic",
+                "v": "{\"id_sensor\":2}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "30",
+        "topic": "",
+        "x": 180,
+        "y": 120,
+        "wires": [
+            [
+                "81ed6d202de0a812"
+            ]
+        ]
+    },
+    {
+        "id": "25caa61e115adbbe",
+        "type": "http request",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 730,
+        "y": 740,
+        "wires": [
+            [
+                "9b8708e21668e120"
+            ]
+        ]
+    },
+    {
+        "id": "97af172ef37649b4",
+        "type": "inject",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "Envia mensagem nivel = 0",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"niv_msg\":0}",
+        "payloadType": "json",
+        "x": 150,
+        "y": 740,
+        "wires": [
+            [
+                "8752a32d974a02c0"
+            ]
+        ]
+    },
+    {
+        "id": "8752a32d974a02c0",
+        "type": "subflow:0fb07bfed74cd45c",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "",
+        "x": 370,
+        "y": 740,
+        "wires": [
+            [
+                "1c9225dceab107f3"
+            ]
+        ]
+    },
+    {
+        "id": "1c9225dceab107f3",
+        "type": "function",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "Mensagem",
+        "func": "let msgWhatsapp = 'Teste de envio de mensagem';\nlet phone = 556181030064;\nlet chave = 7665291;\nlet url = 'https://api.callmebot.com/whatsapp.php?'\nmsg.url = url + 'phone=+' + msg.payload.fone + '&apikey=' + msg.payload.chave + '&text=' + msgWhatsapp;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 720,
+        "wires": [
+            [
+                "25caa61e115adbbe"
+            ]
+        ]
+    },
+    {
+        "id": "a1b99b9d6d6e10a9",
+        "type": "debug",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "achou string",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1090,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "a780fe505d3f58d7",
+        "type": "function",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "inicializa estado anterior",
+        "func": "let varGlobalEst;\n\nvarGlobalEst = 'estadoAnterior' + 6;\nglobal.set(varGlobalEst, 0);\n\nvarGlobalEst = 'estadoAnterior' + 7;\nglobal.set(varGlobalEst, 0);\n\nvarGlobalEst = 'estadoAnterior' + 8;\nglobal.set(varGlobalEst, 0);\n\nvarGlobalEst = 'estadoAnterior' + 9;\nglobal.set(varGlobalEst, 0);\n\nvarGlobalEst = 'estadoAnterior' + 10;\nglobal.set(varGlobalEst, 0);\n\nvarGlobalEst = 'estadoAnterior' + 11;\nglobal.set(varGlobalEst, 0);",
+        "outputs": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "84ef88e781b45e6f",
+        "type": "inject",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 860,
+        "wires": [
+            [
+                "a780fe505d3f58d7"
+            ]
+        ]
+    },
+    {
+        "id": "3e9a02e1485d21c3",
+        "type": "inject",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "area de manipulacao id=5",
+        "props": [
+            {
+                "p": "topic",
+                "v": "{\"id_sensor\":5}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "30",
+        "topic": "",
+        "x": 150,
+        "y": 300,
+        "wires": [
+            [
+                "81ed6d202de0a812"
+            ]
+        ]
+    },
+    {
+        "id": "3ff517efc8e575ce",
+        "type": "inject",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "porta saida produto acabado id=8",
+        "props": [
+            {
+                "p": "topic",
+                "v": "{\"id_sensor\":8}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "30",
+        "topic": "",
+        "x": 170,
+        "y": 480,
+        "wires": [
+            [
+                "3e07cd34d3aa1b47"
+            ]
+        ]
+    },
+    {
+        "id": "aa2376a5785f2de3",
+        "type": "debug",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "resultado captura",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "40e3829630d91472",
+        "type": "inject",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "janela saida produto acabado id=9",
+        "props": [
+            {
+                "p": "topic",
+                "v": "{\"id_sensor\":9}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "30",
+        "topic": "",
+        "x": 180,
+        "y": 540,
+        "wires": [
+            [
+                "3e07cd34d3aa1b47"
+            ]
+        ]
+    },
+    {
+        "id": "eb34451b37592041",
+        "type": "inject",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "janela congelamento materia prima id=6",
+        "props": [
+            {
+                "p": "topic",
+                "v": "{\"id_sensor\":6}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "30",
+        "topic": "",
+        "x": 190,
+        "y": 360,
+        "wires": [
+            [
+                "3e07cd34d3aa1b47"
+            ]
+        ]
+    },
+    {
+        "id": "e816cfce39867f4b",
+        "type": "inject",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "porta congelamento materia prima id=7",
+        "props": [
+            {
+                "p": "topic",
+                "v": "{\"id_sensor\":7}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "30",
+        "topic": "",
+        "x": 190,
+        "y": 420,
+        "wires": [
+            [
+                "3e07cd34d3aa1b47"
+            ]
+        ]
+    },
+    {
+        "id": "8562ea5ee686d34a",
+        "type": "inject",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "porta congelamento produto acabado id=10",
+        "props": [
+            {
+                "p": "topic",
+                "v": "{\"id_sensor\":10}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "30",
+        "topic": "",
+        "x": 210,
+        "y": 600,
+        "wires": [
+            [
+                "3e07cd34d3aa1b47"
+            ]
+        ]
+    },
+    {
+        "id": "3a02a63e35dccaf5",
+        "type": "inject",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "porta tunel congelamento id=11",
+        "props": [
+            {
+                "p": "topic",
+                "v": "{\"id_sensor\":11}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "30",
+        "topic": "",
+        "x": 170,
+        "y": 660,
+        "wires": [
+            [
+                "3e07cd34d3aa1b47"
+            ]
+        ]
+    },
+    {
+        "id": "3e07cd34d3aa1b47",
+        "type": "subflow:b0773837fc14de1b",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "",
+        "x": 540,
+        "y": 500,
+        "wires": [
+            [
+                "aa2376a5785f2de3"
+            ]
+        ]
+    },
+    {
+        "id": "a54c43b18dd88c2d",
+        "type": "inject",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "Envia mensagem nivel = 1",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"niv_msg\":1}",
+        "payloadType": "json",
+        "x": 150,
+        "y": 800,
+        "wires": [
+            [
+                "8752a32d974a02c0"
+            ]
+        ]
+    },
+    {
+        "id": "eb06817124cd7f5b",
+        "type": "csv",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "",
+        "sep": ";",
+        "hdrin": true,
+        "hdrout": "none",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 610,
+        "y": 920,
+        "wires": [
+            [
+                "181c5bbe2ccdf8a4"
+            ]
+        ]
+    },
+    {
+        "id": "f1803a3940539b3c",
+        "type": "file in",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "le arquivo log",
+        "filename": "/home/guioba/qualicarnes/log/log_20250225.txt",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 310,
+        "y": 980,
+        "wires": [
+            [
+                "74dd4777f50aaf65"
+            ]
+        ]
+    },
+    {
+        "id": "a6fd2d18f73ad510",
+        "type": "inject",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 920,
+        "wires": [
+            [
+                "f1803a3940539b3c",
+                "a4633aaa63e197c1"
+            ]
+        ]
+    },
+    {
+        "id": "74dd4777f50aaf65",
+        "type": "join",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "",
+        "mode": "custom",
+        "build": "string",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 470,
+        "y": 920,
+        "wires": [
+            [
+                "eb06817124cd7f5b"
+            ]
+        ]
+    },
+    {
+        "id": "a4633aaa63e197c1",
+        "type": "function",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "inclui header",
+        "func": "msg.payload = 'time; tipoMsg; idMsg; idSensor; tipoSensor; localSensor; msg';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 920,
+        "wires": [
+            [
+                "74dd4777f50aaf65"
+            ]
+        ]
+    },
+    {
+        "id": "81aa8d9c5ad41c9c",
+        "type": "debug",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "181c5bbe2ccdf8a4",
+        "type": "switch",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "",
+        "property": "payload.idSensor",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "5",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 750,
+        "y": 920,
+        "wires": [
+            [
+                "81aa8d9c5ad41c9c"
+            ]
+        ]
+    },
+    {
+        "id": "bb0ee282cc150f7a",
+        "type": "inject",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "",
+        "props": [
+            {
+                "p": "topic.id_sensor",
+                "v": "5",
+                "vt": "str"
+            },
+            {
+                "p": "topic.id_mensagem",
+                "v": "13",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 90,
+        "y": 1040,
+        "wires": [
+            [
+                "6c296ddf715acb84"
+            ]
+        ]
+    },
+    {
+        "id": "e0463549c5ac5a09",
+        "type": "inject",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "Todos os dias às 21:31h",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 1600,
+        "wires": [
+            [
+                "0e99b35485effe87"
+            ]
+        ]
+    },
+    {
+        "id": "0e99b35485effe87",
+        "type": "function",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "time",
+        "func": "let timeAtual = new Date();\n\nmsg.payload = {\n    'time': timeAtual\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 1600,
+        "wires": [
+            [
+                "9f66daeaafbca139"
+            ]
+        ]
+    },
+    {
+        "id": "9f66daeaafbca139",
+        "type": "debug",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 1600,
+        "wires": []
+    },
+    {
+        "id": "cc76d706d154d8ee",
+        "type": "function",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "guarda payload",
+        "func": "let idSensor = msg.payload.id_sensor + '';\nlet idSensorF = (idSensor.length == 1) ? '0' + idSensor : idSensor;\nlet nomeArquivoMsg = '/home/guioba/qualicarnes/config/.msg_sensor_' + idSensorF + '.json';\n\nmsg.payload.nome_arquivo = nomeArquivoMsg;\n\nmsg.topic = {\n    'id_sensor': msg.payload.id_sensor,\n    'nome_arquivo_msg': nomeArquivoMsg,\n    ...msg.payload\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1340,
+        "wires": [
+            [
+                "414bb3fdbe12b78f"
+            ]
+        ]
+    },
+    {
+        "id": "414bb3fdbe12b78f",
+        "type": "file in",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "le timestamp de mensagens de alerta",
+        "filename": "topic.nome_arquivo_msg",
+        "filenameType": "msg",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 530,
+        "y": 1400,
+        "wires": [
+            [
+                "b2b3b7b502904961"
+            ]
+        ]
+    },
+    {
+        "id": "be1250058e607d21",
+        "type": "function",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "recupera payload",
+        "func": "let dadosAnteriores = {} \n\ndadosAnteriores = msg.topic;\nmsg.payload = {\n    ...dadosAnteriores,\n    'dados_mensagem': msg.payload,\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 1460,
+        "wires": [
+            [
+                "59852e54503c77ad"
+            ]
+        ]
+    },
+    {
+        "id": "59852e54503c77ad",
+        "type": "function",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "zera qtd  mensagens ( msg1 a msg6 )",
+        "func": "let idSensor = msg.topic.id_sensor + '';\nlet idSensorF = (idSensor.length == 1) ? '0' + idSensor : idSensor;\nlet nomeArquivoMsg = '/home/guioba/qualicarnes/config/.msg_sensor_' + idSensorF + '.json';\nlet dadosMensagem = msg.payload.dados_mensagem;\nlet tipoSensor = msg.payload.tipo_sensor\nlet obj = {};\n\nfor (var idMensagem = 0; idMensagem < dadosMensagem.length; idMensagem++) {\n\n    obj = {\n        'id': dadosMensagem[idMensagem].id,\n        'time': dadosMensagem[idMensagem].time,\n        'int': dadosMensagem[idMensagem].int,\n        'niv': dadosMensagem[idMensagem].niv,\n        'qtdmax': 5,\n        //'qtdmax': dadosMensagem[idMensagem].qtdmax,\n        'qtd': 0\n    }\n\n    dadosMensagem[idMensagem] = obj;\n}\n\nmsg.topic.nome_arquivo = nomeArquivoMsg;\n\nmsg.payload = dadosMensagem;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 1460,
+        "wires": [
+            [
+                "0cc0f5769f873774"
+            ]
+        ]
+    },
+    {
+        "id": "b2b3b7b502904961",
+        "type": "json",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 770,
+        "y": 1400,
+        "wires": [
+            [
+                "be1250058e607d21"
+            ]
+        ]
+    },
+    {
+        "id": "0cc0f5769f873774",
+        "type": "file",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "atualiza timespamp de mensagens de alerta",
+        "filename": "topic.nome_arquivo_msg",
+        "filenameType": "msg",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "utf8",
+        "x": 370,
+        "y": 1520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e0ac8d92885b2158",
+        "type": "function",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "sensores",
+        "func": "msg.payload = msg.payload + 1\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 1340,
+        "wires": [
+            [
+                "c78a23149971f660",
+                "28a19506c54905f4"
+            ]
+        ]
+    },
+    {
+        "id": "28a19506c54905f4",
+        "type": "function",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "idSensor",
+        "func": "if ( msg.payload >=1 && msg.payload <= 5) {\n    msg.payload = {\n        'id_sensor': msg.payload,\n        'tipo_sensor': 'temperatura'\n    }\n} else {\n    msg.payload = {\n        'id_sensor': msg.payload,\n        'tipo_sensor': 'estado'\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 1340,
+        "wires": [
+            [
+                "cc76d706d154d8ee"
+            ]
+        ]
+    },
+    {
+        "id": "c78a23149971f660",
+        "type": "switch",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lte",
+                "v": "topic",
+                "vt": "msg"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 250,
+        "y": 1400,
+        "wires": [
+            [
+                "e0ac8d92885b2158"
+            ]
+        ]
+    },
+    {
+        "id": "043459f1be4976d4",
+        "type": "inject",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "v": "10",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 90,
+        "y": 1340,
+        "wires": [
+            [
+                "e0ac8d92885b2158"
+            ]
+        ]
+    },
+    {
+        "id": "6b0ac0667d4af879",
+        "type": "function",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "guarda payload",
+        "func": "let idSensor = msg.topic.id_sensor + '';\nlet idSensorF = (idSensor.length == 1) ? '0' + idSensor : idSensor;\nlet nomeArquivoMsg = '/home/guioba/qualicarnes/config/.msg_sensor_' + idSensorF + '.json';\n\nmsg.payload.nome_arquivo = nomeArquivoMsg;\n\nmsg.topic = {\n    'id_sensor': msg.topic.id_sensor,\n    'id_mensagem': msg.topic.id_mensagem,\n    'nome_arquivo_msg': nomeArquivoMsg,\n    ...msg.payload\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 1040,
+        "wires": [
+            [
+                "7573aee942b8fade"
+            ]
+        ]
+    },
+    {
+        "id": "a8ac9ba2ad83c92b",
+        "type": "json",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 250,
+        "y": 1100,
+        "wires": [
+            [
+                "a7dc111bb268cac9"
+            ]
+        ]
+    },
+    {
+        "id": "7573aee942b8fade",
+        "type": "file in",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "le dados de mensagens de alerta",
+        "filename": "topic.nome_arquivo_msg",
+        "filenameType": "msg",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 800,
+        "y": 1040,
+        "wires": [
+            [
+                "a8ac9ba2ad83c92b"
+            ]
+        ]
+    },
+    {
+        "id": "a7dc111bb268cac9",
+        "type": "function",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "recupera payload",
+        "func": "let dadosAnteriores = {} \n\ndadosAnteriores = msg.topic;\nmsg.payload = {\n    ...dadosAnteriores,\n    'dados_mensagem': msg.payload,\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 1100,
+        "wires": [
+            [
+                "61e0f6bb3b6a2825"
+            ]
+        ]
+    },
+    {
+        "id": "61e0f6bb3b6a2825",
+        "type": "function",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "recupera dados de mensagens",
+        "func": "let dadosMensagem = msg.payload.dados_mensagem;\nlet idMensagem = msg.payload.id_mensagem;\nlet idMsgArq = 0;\n\nif ( idMensagem == 1 ) {\n    idMsgArq = 0;\n} else {\n    if ( idMensagem > 20 ) {\n        idMsgArq = idMensagem - 21;\n    } else {\n        if ( idMensagem > 10 ) {\n            idMsgArq = idMensagem - 11;\n        }\n    }\n}\n\nlet intMsg = dadosMensagem[idMsgArq].int;\nlet nivMsg = dadosMensagem[idMsgArq].niv;\nlet qtdMaxMsg = dadosMensagem[idMsgArq].qtdmax;\nlet qtdMsgAtual = dadosMensagem[idMsgArq].qtd + 1;\n\nmsg.payload = {\n    ...msg.payload,\n    'id_msg_arq': idMsgArq,\n    'int_msg': intMsg,\n    'niv_msg': nivMsg,\n    'qtd_max_msg': qtdMaxMsg,\n    'qtd_msg_atual': qtdMsgAtual\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 1100,
+        "wires": [
+            [
+                "5e8b2ec00e436e01"
+            ]
+        ]
+    },
+    {
+        "id": "5e8b2ec00e436e01",
+        "type": "switch",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "qtd  mensagens == 1",
+        "property": "payload.qtd_msg_atual",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "gt",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 300,
+        "y": 1160,
+        "wires": [
+            [
+                "2572989d8a1dbecc",
+                "1b49fcb12c3c6ab3"
+            ],
+            [
+                "2cf7561eced4c0a2"
+            ]
+        ]
+    },
+    {
+        "id": "2572989d8a1dbecc",
+        "type": "change",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "prepara saida",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload.times_mensagem",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "tempo_decorrido_mensagem",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.intervalo_mensagem",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.qtd_msg_por_dia",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 480,
+        "y": 1220,
+        "wires": [
+            [
+                "790fab7114ddab66"
+            ]
+        ]
+    },
+    {
+        "id": "419133700c0bac21",
+        "type": "function",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "calcula tempo decorrido entre mensagens",
+        "func": "let dadosMensagem = msg.payload.dados_mensagem;\nlet idMsgArq = msg.payload.id_msg_arq;\nlet timeAtual = new Date().getTime();\nlet milissegundos;\nlet minutos;\n\nmilissegundos = timeAtual - dadosMensagem[idMsgArq].time;\nminutos = Math.abs(Math.round(milissegundos / 60000));\n\nmsg.topic = {\n    'id_sensor': msg.payload.id_sensor,\n    'nome_arquivo_msg': msg.payload.nome_arquivo_msg\n}\nmsg.payload = {\n    ...msg.payload,\n    'tempo_decorrido_mensagem': minutos\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 1280,
+        "wires": [
+            [
+                "27c8d85b448eab7c"
+            ]
+        ]
+    },
+    {
+        "id": "27c8d85b448eab7c",
+        "type": "switch",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "tempo decorrido entre mensagens >= intervalo limite entre mensagens",
+        "property": "payload.tempo_decorrido_mensagem",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "payload.int_msg",
+                "vt": "msg"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1230,
+        "y": 1280,
+        "wires": [
+            [
+                "2572989d8a1dbecc",
+                "1b49fcb12c3c6ab3"
+            ]
+        ]
+    },
+    {
+        "id": "343ef4e348237f1f",
+        "type": "file",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "atualiza dados de mensagens de alerta",
+        "filename": "topic.nome_arquivo_msg",
+        "filenameType": "msg",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "utf8",
+        "x": 1120,
+        "y": 1160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1b49fcb12c3c6ab3",
+        "type": "function",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "gera timespamp e atualiza qtd de mensagens de alerta",
+        "func": "let timeAtual = new Date().getTime();\nlet dadosMensagem = msg.payload.dados_mensagem;\nlet qtdMsgSensor = msg.payload.qtd_msg_sensor;\nlet idMsgArq = msg.payload.id_msg_arq;\nlet qtdMsgAtual = msg.payload.qtd_msg_atual;\n\n\ndadosMensagem[idMsgArq].time = timeAtual;\ndadosMensagem[idMsgArq].qtd = qtdMsgAtual;\n\nmsg.payload = dadosMensagem;\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 1160,
+        "wires": [
+            [
+                "343ef4e348237f1f"
+            ]
+        ]
+    },
+    {
+        "id": "2cf7561eced4c0a2",
+        "type": "switch",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "qtd de mensagens <= qtd maxima de mensagens",
+        "property": "payload.qtd_msg_atual",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lte",
+                "v": "payload.qtd_max_msg",
+                "vt": "msg"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 390,
+        "y": 1280,
+        "wires": [
+            [
+                "419133700c0bac21"
+            ]
+        ]
+    },
+    {
+        "id": "8a00bfb401e82bb2",
+        "type": "debug",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "790fab7114ddab66",
+        "type": "subflow:0fb07bfed74cd45c",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "",
+        "x": 670,
+        "y": 1220,
+        "wires": [
+            [
+                "8a00bfb401e82bb2"
+            ]
+        ]
+    },
+    {
+        "id": "6c296ddf715acb84",
+        "type": "subflow:0ec016be138128f8",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "",
+        "x": 310,
+        "y": 1040,
+        "wires": [
+            [
+                "6b0ac0667d4af879"
+            ]
+        ]
+    },
+    {
+        "id": "e8ea8530abf1244d",
+        "type": "debug",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "nao achou string",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1100,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "fdcfe0b1e425b26e",
+        "type": "function",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "simula resposta msg whatsapp",
+        "func": "let str = \"<p>Message to: +556181030064<p>Text to send: Teste de mensagem<p><b>Message queued.</b> You will receive it in a few seconds.\";\nlet posIni = str.indexOf(\"+\");\nlet posFim = str.indexOf(\"<p>\", posIni + 3);\nlet fone = str.substring(posIni, posFim);\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 1660,
+        "wires": [
+            [
+                "c87f23884dcb5cd9"
+            ]
+        ]
+    },
+    {
+        "id": "85b02852dd014dd5",
+        "type": "inject",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 1660,
+        "wires": [
+            [
+                "fdcfe0b1e425b26e"
+            ]
+        ]
+    },
+    {
+        "id": "c87f23884dcb5cd9",
+        "type": "debug",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "debug 12",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 1660,
+        "wires": []
+    },
+    {
+        "id": "9b8708e21668e120",
+        "type": "debug",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "debug 13",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "8e0584de5a0fd2e8",
+        "type": "subflow:b941b6f4ae201e03",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "",
+        "x": 340,
+        "y": 1720,
+        "wires": []
+    },
+    {
+        "id": "711afd5257f0e466",
+        "type": "inject",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "id_sensor = 10",
+        "props": [
+            {
+                "p": "topic.id_sensor",
+                "v": "10",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 1720,
+        "wires": [
+            [
+                "8e0584de5a0fd2e8"
+            ]
+        ]
+    },
+    {
+        "id": "3a897e8ff5d14694",
+        "type": "subflow:7edd80282373f2e7",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "",
+        "x": 610,
+        "y": 1780,
+        "wires": []
+    },
+    {
+        "id": "36ae9f170bb6465d",
+        "type": "inject",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "envia mensagem",
+        "props": [
+            {
+                "p": "topic.id_sensor",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "p": "topic.id_mensagem",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 1780,
+        "wires": [
+            [
+                "2143eee7795f7147"
+            ]
+        ]
+    },
+    {
+        "id": "2143eee7795f7147",
+        "type": "function",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "seleciona arquivos de log por data",
+        "func": "let data = new Date();\nlet dia = data.getDate().toString();\nlet diaF = (dia.length == 1) ? '0' + dia : dia;\nlet mes = (data.getMonth() + 1).toString();\nlet mesF = (mes.length == 1) ? '0' + mes : mes;\nlet anoF = data.getFullYear();\nlet nomeArquivoLogSistema = '/home/guioba/qualicarnes/log/log_' + anoF + mesF + diaF + '.txt';\nlet dadosTopic = {};\ndadosTopic = msg.topic;\n\nmsg.topic = {\n    ...dadosTopic,\n    'nome_arquivo_log': nomeArquivoLogSistema\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 1780,
+        "wires": [
+            [
+                "3a897e8ff5d14694"
+            ]
+        ]
+    },
+    {
+        "id": "5082f4767e08641e",
+        "type": "function",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "Mensagem",
+        "func": "let msgWhatsapp = 'Mais um Teste de mensagem';\nlet phone = 556181030064;\nlet chave = 7665291;\nlet url = 'https://api.callmebot.com/whatsapp.php?'\nmsg.url = url + 'phone=+' + msg.payload.fone + '&apikey=' + msg.payload.chave + '&text=' + msgWhatsapp;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 800,
+        "wires": [
+            [
+                "25caa61e115adbbe"
+            ]
+        ]
+    },
+    {
+        "id": "ad817edd46f87835",
+        "type": "inject",
+        "z": "3a838bfa4c7c3d5b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 380,
+        "y": 800,
+        "wires": [
+            [
+                "5082f4767e08641e"
             ]
         ]
     }
