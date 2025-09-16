@@ -8,6 +8,14 @@
         "env": []
     },
     {
+        "id": "0989bce539abecb2",
+        "type": "tab",
+        "label": "Fluxo 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "47c9fdc27cccf721",
         "type": "subflow",
         "name": "modbus temperatura",
@@ -6582,6 +6590,24 @@
             [
                 "9fd63093eea78bc1"
             ]
+        ]
+    },
+    {
+        "id": "f0df8db632a11c1c",
+        "type": "function",
+        "z": "0989bce539abecb2",
+        "name": "function 1",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 200,
+        "wires": [
+            []
         ]
     }
 ]
